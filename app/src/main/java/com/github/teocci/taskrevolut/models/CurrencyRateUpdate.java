@@ -3,6 +3,8 @@ package com.github.teocci.taskrevolut.models;
 import java.util.Map;
 
 /**
+ * Receives JSON responses and converted as class with the GSON library.
+ *
  * Created by teocci.
  *
  * @author teocci@yandex.com on 2019-Aug-02

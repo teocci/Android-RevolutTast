@@ -2,6 +2,7 @@ package com.github.teocci.taskrevolut.Views;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.github.teocci.taskrevolut.net.CurrencyUpdater;
 
 /**
  * Created by teocci.
@@ -10,34 +11,29 @@ import android.text.TextWatcher;
  */
 public class EditTextWatcher implements TextWatcher
 {
-    private CurrencyUpdater mPresenter;
-    private double mEndValue = 1d;
+    private CurrencyUpdater currencyUpdater;
+    private double value = 1d;
 
-    public EditTextWatcher(CurrencyUpdater presenter)
+    public EditTextWatcher(CurrencyUpdater currencyUpdater)
     {
-        mPresenter = presenter;
+        this.currencyUpdater = currencyUpdater;
     }
 
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after)
-    {
-
-    }
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count)
     {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s)
-    {
         try {
-            mEndValue = Double.valueOf(s.toString());
+            value = Double.valueOf(s.toString());
         } catch (NumberFormatException exc) {
             exc.printStackTrace();
         }
-        mPresenter.setSelectedCurrencyValue(mEndValue);
+        currencyUpdater.setSelectedCurrencyValue(value);
+        currencyUpdater.onUpdate(true);
     }
+
+    @Override
+    public void afterTextChanged(Editable s) {}
 }

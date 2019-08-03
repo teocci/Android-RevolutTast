@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="rate"
-            type="com.github.teocci.taskrevolut.models.CurrencyRate"/>
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:clickable="true"
         android:focusable="true">
 
-        <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="36dp"/>
+            app:layout_constraintGuide_end="339dp"/>
 
-        <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.65"/>
 
-        <androidx.constraintlayout.widget.Guideline
+
+    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,65 +31,70 @@
             app:layout_constraintGuide_percent="0.5"/>
 
 
-        <TextView
-            android:id="@+id/country_flag_tv"
+    <com.github.teocci.taskrevolut.Views.CircularImageView
+            android:id="@+id/currency_flag"
             android:layout_width="@dimen/country_flag_size"
             android:layout_height="@dimen/country_flag_size"
             android:focusableInTouchMode="true"
             android:gravity="bottom|center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_start"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/currency_flag_description"
+            app:civ_border_width="0dp"
+            app:civ_shadow="false"/>
 
-
-        <TextView
+    <TextView
             android:id="@+id/currency_id"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:gravity="start|bottom"
-            android:textAppearance="@style/currency_iso_text"
+            android:textAppearance="@style/currency_id_text"
             app:layout_constraintBottom_toTopOf="@+id/guideline_center_vertical"
             app:layout_constraintEnd_toStartOf="@+id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
+    <TextView
             android:id="@+id/currency_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:ellipsize="start"
             android:gravity="start|top"
             android:singleLine="true"
-            android:textColor="#616161"
-            android:textSize="@dimen/currency_name_text_size"
+            android:textAppearance="@style/currency_name_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintTop_toTopOf="@+id/guideline_center_vertical"/>
 
-        <EditText
+    <EditText
             android:id="@+id/currency_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="0"
+            android:hint="@string/currency_value_hint"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
-            android:maxLength="8"
+            android:maxLength="11"
             android:maxLines="1"
-            android:textColor="#1a1a1a"
-            android:textSize="@dimen/currency_rate_text_size"
+            android:textAppearance="@style/currency_value_edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline_end"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

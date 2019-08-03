@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 import static com.github.teocci.taskrevolut.utils.Config.REQUEST;
-import static com.github.teocci.taskrevolut.utils.Config.TYPE;
+import static com.github.teocci.taskrevolut.utils.Config.PARAMETER;
 
 /**
  * Created by teocci.
@@ -17,5 +17,5 @@ import static com.github.teocci.taskrevolut.utils.Config.TYPE;
 public interface RevolutAPIService
 {
     @GET(REQUEST)
-    Single<CurrencyRateUpdate> latestRates(@Query(TYPE) String action);
+    Single<CurrencyRateUpdate> latestRates(@Query(PARAMETER) String action);
 }

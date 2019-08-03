@@ -1,5 +1,7 @@
 package com.github.teocci.taskrevolut.models;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by teocci.
  *
@@ -11,6 +13,7 @@ public class CurrencyRate
     public String currencyName;
     public double value;
     public double rate;
+    public Drawable currencyFlag;
 
 
     public CurrencyRate(String currencyId, double value)
@@ -32,5 +35,17 @@ public class CurrencyRate
         this.currencyName = currencyName;
         this.rate = rate;
         this.value = value;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "CurrencyRate {" +
+                "currencyId='" + currencyId + '\'' +
+                ", currencyName='" + currencyName + '\'' +
+                ", value='" + value + '\'' +
+                ", rate='" + rate + '\'' +
+                ", currencyFlag='" + currencyFlag + '\'' +
+                '}' + '\n';
     }
 }

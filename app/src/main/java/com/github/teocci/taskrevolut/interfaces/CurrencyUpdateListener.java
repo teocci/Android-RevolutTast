@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CurrencyUpdateListener
 {
-    void onUpdate(List<CurrencyRate> rateList);
+    void onUpdate(List<CurrencyRate> rateList, boolean ignoreFocus);
 
     void onError(String message);
 }
