@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ProgressBar;
 import com.github.teocci.taskrevolut.R;
 import com.github.teocci.taskrevolut.Views.CurrencyRateViewHolder;
 import com.github.teocci.taskrevolut.Views.EditTextWatcher;
@@ -30,6 +31,8 @@ public class CurrencyRatesAdapter extends RecyclerView.Adapter<CurrencyRateViewH
 {
     private Map<String, Drawable> currencyFlags;
     private Map<String, String> currencyNames;
+
+    private ProgressBar loaderBar;
 
     private EditTextWatcher editTextWatcher;
     private OnItemEventListener onItemEventListener;
@@ -59,6 +62,8 @@ public class CurrencyRatesAdapter extends RecyclerView.Adapter<CurrencyRateViewH
     @Override
     public void onBindViewHolder(@NonNull CurrencyRateViewHolder viewHolder, int position)
     {
+        if (loaderBar != null) loaderBar.setVisibility(View.GONE);
+
         // Get the data model based on position
         CurrencyRate rate = currencyRateList.get(position);
         String currencyId = rate.currencyId;
@@ -77,11 +82,6 @@ public class CurrencyRatesAdapter extends RecyclerView.Adapter<CurrencyRateViewH
                     editTextWatcher
             );
         }
-
-        // Set item views based on your views and data model
-//        TextView currencyId = viewHolder.currencyId;
-//        TextView currencyName = viewHolder.currencyName;
-//        EditText currencyValue = viewHolder.currencyValue;
     }
 
     @Override
@@ -163,6 +163,11 @@ public class CurrencyRatesAdapter extends RecyclerView.Adapter<CurrencyRateViewH
         notifyItemMoved(position, 0);
     }
 
+    public void setLoaderBar(ProgressBar loaderBar)
+    {
+        this.loaderBar = loaderBar;
+    }
+
     public void setCurrencyFlags(Map<String, Drawable> currencyFlags)
     {
         this.currencyFlags = currencyFlags;
@@ -201,7 +206,8 @@ public class CurrencyRatesAdapter extends RecyclerView.Adapter<CurrencyRateViewH
         return -1;
     }
 
-    public boolean isCurrencyRateListEmpty() {
+    public boolean isCurrencyRateListEmpty()
+    {
         return currencyRateList == null || currencyRateList.isEmpty();
     }
 }

@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements CurrencyUpdateLis
     private volatile boolean isCurrencyValueEditing = false;
 
     private RecyclerView recyclerView;
+    private ProgressBar loaderBar;
 
     private CurrencyUpdater currencyUpdater;
 
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements CurrencyUpdateLis
         textWatcher = new EditTextWatcher(currencyUpdater);
 
         recyclerView = (RecyclerView) findViewById(R.id.rates_data);
+        loaderBar = (ProgressBar) findViewById(R.id.loader_bar);
 
         initAdapter();
     }
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements CurrencyUpdateLis
         initHashMaps();
 
         adapter = new CurrencyRatesAdapter(this, textWatcher);
+        adapter.setLoaderBar(loaderBar);
         adapter.setCurrencyFlags(currencyFlags);
         adapter.setCurrencyNames(currencyNames);
 
