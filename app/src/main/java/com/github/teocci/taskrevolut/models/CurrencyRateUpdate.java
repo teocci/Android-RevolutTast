@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * Receives JSON responses and converted as class with the GSON library.
- *
+ * <p>
  * Created by teocci.
  *
  * @author teocci@yandex.com on 2019-Aug-02

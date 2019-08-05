@@ -5,13 +5,17 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.github.teocci.taskrevolut.R;
 import com.github.teocci.taskrevolut.interfaces.OnItemEventListener;
 import com.github.teocci.taskrevolut.models.CurrencyRate;
 import com.github.teocci.taskrevolut.utils.LogHelper;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
+ * This Class provides a reference to the views for each data item.
+ * <p>
  * Created by teocci.
  *
  * @author teocci@yandex.com on 2019-Aug-02
@@ -22,8 +26,6 @@ public class CurrencyRateViewHolder extends RecyclerView.ViewHolder
 
     private View itemView;
 
-    private EditTextWatcher editTextWatcher;
-    private OnItemEventListener onItemEventListener;
 
     private CircularImageView currencyFlag;
     private TextView currencyId;
@@ -40,49 +42,43 @@ public class CurrencyRateViewHolder extends RecyclerView.ViewHolder
         this.currencyId = (TextView) itemView.findViewById(R.id.currency_id);
         this.currencyName = (TextView) itemView.findViewById(R.id.currency_name);
         this.currencyValue = (EditText) itemView.findViewById(R.id.currency_value);
-
-
-        // Setup the click listener
-//        itemView.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                // Triggers click upwards to the adapter on click
-//                if (listener != null) {
-//                    int position = getAdapterPosition();
-//                    if (position != RecyclerView.NO_POSITION) {
-//                        listener.onItemClick(itemView, position);
-//                    }
-//                }
-//            }
-//        });
     }
 
-    public void bindView(CurrencyRate currencyRate, OnItemEventListener onItemEventListener, EditTextWatcher editTextWatcher)
+    /**
+     * Replace the contents of a view.
+     *
+     * @param rateUpdate New data to update the view.
+     * @param onItemEventListener onClick and onFocus event listener
+     * @param editTextWatcher editable element listener
+     */
+    public void bindView(CurrencyRate rateUpdate, OnItemEventListener onItemEventListener, EditTextWatcher editTextWatcher)
     {
         if (currencyValue == null) return;
-        if (currencyRate.currencyId == null) return;
+        if (rateUpdate.currencyId == null) return;
         if (itemView == null) return;
 
-        this.currencyFlag.setImageDrawable(currencyRate.currencyFlag);
-        this.onItemEventListener = onItemEventListener;
-        this.editTextWatcher = editTextWatcher;
+        this.currencyFlag.setImageDrawable(rateUpdate.currencyFlag);
 
-        currencyId.setText(currencyRate.currencyId);
-        currencyName.setText(currencyRate.currencyName);
-//        currencyValue.setText(Double.toString(currencyRate.value));
+        currencyId.setText(rateUpdate.currencyId);
+        currencyName.setText(rateUpdate.currencyName);
 
-        initCurrencyValue(currencyRate, onItemEventListener, editTextWatcher);
+        initCurrencyValue(rateUpdate, onItemEventListener, editTextWatcher);
 
         itemView.setOnClickListener(v -> {
             v.setFocusableInTouchMode(true);
             v.requestFocus();
             v.setFocusableInTouchMode(false);
-            onItemEventListener.onItemClick(currencyRate.currencyId);
+            onItemEventListener.onItemClick(rateUpdate.currencyId);
         });
     }
 
+    /**
+     * Update the editable element of the view.
+     *
+     * @param currencyRate New data to update the view.
+     * @param onItemEventListener onClick and onFocus event listener
+     * @param editTextWatcher editable element listener
+     */
     private void initCurrencyValue(CurrencyRate currencyRate, OnItemEventListener onItemEventListener, EditTextWatcher editTextWatcher)
     {
         if (currencyValue == null) return;
@@ -105,11 +101,5 @@ public class CurrencyRateViewHolder extends RecyclerView.ViewHolder
 
             return false;
         });
-
-//        try {
-//            currencyValue.setSelection(currencyValue.getText().length());
-//        } catch (NullPointerException e) {
-//            e.printStackTrace();
-//        }
     }
 }

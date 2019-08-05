@@ -3,6 +3,8 @@ package com.github.teocci.taskrevolut.models;
 import android.graphics.drawable.Drawable;
 
 /**
+ * Represents an element of the RecycleView.
+ * <p>
  * Created by teocci.
  *
  * @author teocci@yandex.com on 2019-Aug-02

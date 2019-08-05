@@ -2,9 +2,12 @@ package com.github.teocci.taskrevolut.Views;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+
 import com.github.teocci.taskrevolut.net.CurrencyUpdater;
 
 /**
+ * This class implements a TextWatcher interface, its methods will  be called when the text is changed.
+ * <p>
  * Created by teocci.
  *
  * @author teocci@yandex.com on 2019-Aug-02
