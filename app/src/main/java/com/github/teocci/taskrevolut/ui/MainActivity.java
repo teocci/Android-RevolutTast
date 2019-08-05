@@ -5,11 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
+
 import com.github.teocci.taskrevolut.Adapters.CurrencyRatesAdapter;
 import com.github.teocci.taskrevolut.R;
 import com.github.teocci.taskrevolut.Views.EditTextWatcher;
@@ -24,8 +20,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
+
 import static android.view.View.VISIBLE;
 
+/**
+ * Created by teocci.
+ *
+ * @author teocci@yandex.com on 2019-Aug-02
+ */
 public class MainActivity extends AppCompatActivity implements CurrencyUpdateListener, OnItemEventListener
 {
     private final static String TAG = LogHelper.makeLogTag(MainActivity.class);
@@ -98,9 +105,9 @@ public class MainActivity extends AppCompatActivity implements CurrencyUpdateLis
         LogHelper.e(TAG, message);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Alert");
+        builder.setTitle(getString(R.string.dialog_title));
         builder.setMessage(message);
-        builder.setNegativeButton("Close", (dialogInterface, i) -> dialogInterface.dismiss());
+        builder.setNegativeButton(getString(R.string.dialog_close), (dialogInterface, i) -> dialogInterface.dismiss());
         AlertDialog dialog = builder.create();
 
         // Display the alert dialog on app interface and check if the activity has not finished

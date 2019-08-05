@@ -24,7 +24,7 @@ import static com.github.teocci.taskrevolut.utils.Config.UPDATE_INTERVAL;
  * <p>
  * Created by teocci.
  *
- * @author teocci@yandex.com on 2019-Aug-02
+ * @author teocci@yandex.com on 2019-Aug-05
  */
 public class CurrencyUpdater
 {

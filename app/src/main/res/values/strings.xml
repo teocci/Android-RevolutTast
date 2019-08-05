@@ -3,4 +3,8 @@
     <string name="rates_title">Rates</string>
     <string name="currency_flag_description">flags</string>
     <string name="currency_value_hint">0.00</string>
+
+
+    <string name="dialog_title">Alert</string>
+    <string name="dialog_close">Close</string>
 </resources>
