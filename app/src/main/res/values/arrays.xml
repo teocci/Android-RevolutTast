@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="currency_iso_names">
+    <string-array name="currency_id">
         <item>EUR</item>
         <item>AUD</item>
         <item>BGN</item>

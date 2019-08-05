@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements CurrencyUpdateLis
         currencyFlags = new HashMap<>();
         currencyNames = new HashMap<>();
 
-        String[] currencyIdNames = getResources().getStringArray(R.array.currency_iso_names);
+        String[] currencyIdNames = getResources().getStringArray(R.array.currency_id);
         String[] currencyNames = getResources().getStringArray(R.array.currency_names);
 
         int length = currencyIdNames.length;
